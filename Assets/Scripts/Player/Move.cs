@@ -7,27 +7,46 @@ public class Move : MonoBehaviour
     [SerializeField][Range(1f, 10f)] float moveSpeed = 10f;
     float reduceSpeed = 5f;
 
-    [Header("XYZ")]
-    int nothingHereYet;
+    float xValue;
+    float zValue;
 
+    Rigidbody playerRigidBody;
+
+    void Awake()
+    {
+        
+    }
 
     void Start()
     {
+        playerRigidBody = GetComponent<Rigidbody>();
+    }
+
+    void FixedUpdate()
+    {
+        
     }
 
     void Update()
     {
+        //PlayerInput();
         MovePlayer();
     }
 
     void MovePlayer()
     {
-        float xValue = Input.GetAxis("Horizontal") * Time.deltaTime;
-        float zValue = Input.GetAxis("Vertical") * Time.deltaTime;
-        transform.Translate(xValue * moveSpeed, 0, zValue * moveSpeed);
+        xValue = Input.GetAxis("Horizontal");
+        zValue = Input.GetAxis("Vertical");
+        Vector3 playerVelocity = new Vector3(xValue * moveSpeed, 0, zValue*moveSpeed);
+        playerRigidBody.velocity = playerVelocity;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    /*|void PlayerInput()
+    {
+        
+    }*/
+
+   private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Explosive")
         {
@@ -42,4 +61,5 @@ public class Move : MonoBehaviour
             moveSpeed = 10f;
         }
     }
+
 }
