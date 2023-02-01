@@ -5,13 +5,24 @@ using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
-    public static bool isPaused = false;
+    public bool isPaused = false;
 
     [SerializeField] GameObject pauseUI;
 
+    Beginning gameBegin;
+    Win gameWin;
+    PlayerStatus playerDeath;
+
+    void Start()
+    {
+        gameBegin = FindObjectOfType<Beginning>();
+        gameWin = FindObjectOfType<Win>();
+        playerDeath = FindObjectOfType<PlayerStatus>();
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && gameBegin.hasStarted && !gameWin.hasWin && !playerDeath.hasDied)
         {
             if (isPaused)
             {

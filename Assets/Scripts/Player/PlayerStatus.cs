@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.UI;
 
 public class PlayerStatus : MonoBehaviour
 {
     [SerializeField] float deathDelay = 0.15f;
     [SerializeField] float timer = 0f;
+    [SerializeField] GameObject deathUI;
+
     private bool isTriggered = false;
+    public bool hasDied = false;
 
     int score = 0;
 
@@ -64,6 +68,8 @@ public class PlayerStatus : MonoBehaviour
                 impulseSource.GenerateImpulse(.5f);
                 gameObject.SetActive(false);
                 timer = 0f;
+                deathUI.SetActive(true);
+                hasDied= true;
             }
         }
     }
