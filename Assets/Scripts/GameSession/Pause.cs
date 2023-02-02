@@ -22,12 +22,13 @@ public class Pause : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && gameBegin.hasStarted && !gameWin.hasWin && !playerDeath.hasDied)
+        if (Input.GetKeyDown(KeyCode.P) && gameBegin.hasStarted && !gameWin.hasWin && !playerDeath.hasDied)
         {
             if (isPaused)
             {
                 Resume();
             }
+            
             else
             {
                 PauseGame();
