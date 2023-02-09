@@ -9,7 +9,7 @@ This project is my own modeified version with added features of the game project
 - Win, Death and Pause States.
 - Other features.
 
-*NOTE:
+-**NOTE**:
 
 -To play this game use the Arrow or the WASD keys.
 
